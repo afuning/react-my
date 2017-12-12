@@ -1,0 +1,60 @@
+@import '../../variable.css';
+#particles{
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 2px;
+    opacity: 0;
+    transition: all 2s;
+    transition-delay: 1.4s;
+    transition-timing-function: ease-in-out;
+    width: 100%;
+    z-index: 10;
+    
+    &.visible{
+      opacity: 1;
+    }
+    
+    & .particle-path{
+      position: absolute;
+      transition: opacity 0.4s;
+      width: 2px;
+      & .particle{
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        background-color: var(--white-color);
+        border-radius: 10px;
+        height: 2px;
+        position: absolute;
+        width: 2px;
+      }
+    }
+  }
+  @keyframes particle-down {
+  from{
+    opacity: 0;
+    top: 0%;
+  }
+  20%{
+    opacity: 0.8;
+  }
+  80%, to{
+    opacity: 0;
+    top: 100%;
+  }
+}
+
+@keyframes particle-up {
+  from{
+    opacity: 0;
+    top: 100%;
+  }
+  20%{
+    opacity: 0.8;
+  }
+  80%, to{
+    opacity: 0;
+    top: 0%;
+  }
+}

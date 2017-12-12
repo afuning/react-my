@@ -1,0 +1,108 @@
+:root {
+    --pink: #e91e63;
+    --blue: #40c4ff;
+    --green: #00e676;
+    --purple: #8e24aa;
+    --yellow: #ffa000;
+}
+.float-btn-group {
+    position: relative;
+    transition: .3s;
+    width: 65px;
+    padding-left: 15px;
+    min-height: 65px;
+    overflow: hidden;
+    float: right;
+    & .btn-triger{
+        z-index: 15;
+        float: left;
+        background-color: var(--pink);
+        margin-right: 5px;
+    }
+    & .btn-icon {
+        background: #fff;
+        height: 20px;
+        width: 2px;
+        margin: auto;
+        display: block;
+        position: relative;
+        transition: .3s .3s;
+        margin-top: 15px;
+        &:after{
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 2px;
+            background: #fff;
+            left: 8px;
+            transition: .3s .3s;
+        }
+        &:before{
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 2px;
+            background: #fff;
+            left: -8px;
+            transition: .3s .3s;
+        }
+    }
+    & .btn-float {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        border:none;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.11);
+        transition: .3s;
+        &:hover {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.13);
+        }
+        &+.btn-float{
+            margin-left: 5px;
+        }
+        &.blue {
+            background-color: var(--blue);
+        }
+        &.green {
+            background-color: var(--green);
+        }
+        &.yellow {
+            background-color: var(--yellow);
+        }
+        &.purple {
+            background-color: var(--purple);
+        }
+    }
+    & .btn-list{
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        // width: 215px;
+        transition: .3s;
+        & i {
+            font-size: 22px;
+        }
+    }
+    &.open{
+        width: 230px;
+        & .btn-list { 
+           opacity: 1;
+        }
+        & .btn-icon {
+            background: transparent;
+            &:after{
+                transform: translateX(-8px) rotate(-45deg);
+            }
+            &:before{
+                transform: translateX(8px) rotate(45deg);
+            }
+        }
+    }
+}

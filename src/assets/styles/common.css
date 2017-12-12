@@ -1,0 +1,327 @@
+@charset "utf-8";
+
+.clear {
+  clear: both;
+}
+
+/********************************************************* position ***************************************************************/
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed;
+}
+
+/********************************************************* display ***************************************************************/
+.inline {
+  display: inline-block !important;
+}
+.flex{
+  display: flex !important;
+}
+.block {
+  display: block !important;
+}
+
+.none {
+  display: none !important;
+}
+
+/********************************************************* float ***************************************************************/
+
+.float-right {
+  float: right !important;
+}
+
+.float-left {
+  float: left !important;
+}
+
+/********************************************************* align ***************************************************************/
+.align-center {
+  text-align: center !important;
+}
+
+.align-left {
+  text-align: left !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.align-middle {
+  vertical-align: middle !important;
+}
+
+.align-top {
+  vertical-align: top !important;
+}
+
+.align-bottom {
+  vertical-align: bottom !important;
+}
+
+/************************************************font size bigger ***************************************************************/
+.bigger-110 {
+  font-size: 110%;
+}
+
+.bigger-120 {
+  font-size: 120%;
+}
+
+.bigger-130 {
+  font-size: 130%;
+}
+
+.bigger-140 {
+  font-size: 140%;
+}
+
+.bigger-150 {
+  font-size: 150%;
+}
+
+.bigger-200 {
+  font-size: 200%;
+}
+
+.bigger-250 {
+  font-size: 250%;
+}
+
+.bigger-300 {
+  font-size: 300%;
+}
+
+
+/************************************************font weight ***************************************************************/
+.bold {
+  font-weight: bold;
+}
+
+/********************************************************* width ***************************************************************/
+.width-5 {
+  width: 5% !important;
+}
+
+.width-10 {
+  width: 10% !important;
+}
+
+.width-15 {
+  width: 15% !important;
+}
+
+.width-20 {
+  width: 20% !important;
+}
+
+.width-25 {
+  width: 25% !important;
+}
+
+.width-30 {
+  width: 30% !important;
+}
+.width-33 {
+  width: 33.3% !important;
+}
+.width-35 {
+  width: 35% !important;
+}
+
+.width-40 {
+  width: 40% !important;
+}
+
+.width-45 {
+  width: 45% !important;
+}
+.width-49{
+  width: 49% !important;
+}
+.width-50 {
+  width: 50% !important;
+}
+
+.width-55 {
+  width: 55% !important;
+}
+
+.width-60 {
+  width: 60% !important;
+}
+
+.width-65 {
+  width: 65% !important;
+}
+
+.width-70 {
+  width: 70% !important;
+}
+
+.width-75 {
+  width: 75% !important;
+}
+
+.width-80 {
+  width: 80% !important;
+}
+
+.width-85 {
+  width: 85% !important;
+}
+
+.width-90 {
+  width: 90% !important;
+}
+
+.width-95 {
+  width: 95% !important;
+}
+
+.width-100 {
+  width: 100% !important;
+}
+
+.width-auto {
+  width: auto !important;
+}
+
+/********************************************************* flex width ***************************************************************/
+.flex-1{
+  flex:1;
+}
+.flex-2{
+  flex: 2;
+}
+.flex-3{
+  flex: 3;
+}
+.flex-4{
+  flex: 4;
+}
+.flex-5{
+  flex: 5;
+}
+.flex-6{
+  flex: 6;
+}
+
+/********************************************************* height ***************************************************************/
+.height-auto {
+  height: auto !important;
+}
+
+.height-100 {
+  height: 100% !important;
+}
+
+.height-90 {
+  height: 90% !important;
+}
+
+/********************************************************* margin ***************************************************************/
+
+.margin-auto {
+  margin: 0 auto !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
+.no-margin-top {
+  margin-top: 0 !important;
+}
+
+.no-margin-left {
+  margin-left: 0 !important;
+}
+
+.no-margin-right {
+  margin-right: 0 !important;
+}
+
+/********************************************************* padding ***************************************************************/
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0 !important;
+}
+
+.no-padding-top {
+  padding-top: 0 !important;
+}
+
+.no-padding-left {
+  padding-left: 0 !important;
+}
+
+.no-padding-right {
+  padding-right: 0 !important;
+}
+
+/********************************************************* border ***************************************************************/
+.no-border {
+  border: 0 none !important;
+}
+
+.no-border-bottom {
+  border-bottom: 0 none;
+}
+
+.no-border-top {
+  border-top: 0 none;
+}
+
+.no-border-left {
+  border-left: medium none;
+}
+
+.no-border-right {
+  border-right: 0 none;
+}
+
+/********************************************************* border ***************************************************************/
+
+/********************************************************* overflow ***************************************************************/
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}
+
+.overflow-scroll {
+  overflow: scroll !important;
+}
+
+.overflow-visible {
+  overflow: visible !important;
+}
+
+/********************************************************* cursor ***************************************************************/
+.cursor-pointer {
+  cursor: pointer !important;;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+

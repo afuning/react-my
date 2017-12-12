@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('../fonts/iconfont.eot?iconTimeStamp=1511522163658'),
+  url('../fonts/iconfont.woff?iconTimeStamp=1511522163658') format('woff'),
+  url('../fonts/iconfont.ttf?iconTimeStamp=1511522163658') format('truetype'),
+  url('../fonts/iconfont.svg?iconTimeStamp=1511522163658') format('svg');
+}
+[class^="icon-"],
+[class*=" icon-"]{
+    font-family: "iconfont" !important;
+    speak: none;
+    font-size:16px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    vertical-align: middle;
+    display: inline-block;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-home:before { content: "\e600"; }
+
+.icon-8:before { content: "\e607"; }
+
+.icon-11:before { content: "\e639"; }
+
+.icon-music:before { content: "\e64e"; }
+
+.icon-email:before { content: "\e675"; }
+
+.icon-app:before { content: "\e606"; }
+
+.icon-play:before { content: "\e6f0"; }
+
+.icon-link:before { content: "\e78c"; }
+
+.icon-dibushouye:before { content: "\e613"; }
+
+.icon-github:before { content: "\e601"; }
+
+.icon-last:before { content: "\e628"; }
+
+.icon-next:before { content: "\e629"; }
+

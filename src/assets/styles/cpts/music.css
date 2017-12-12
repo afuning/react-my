@@ -1,0 +1,71 @@
+@import '../variable.css';
+.music-container {
+    height: 100%;
+    width: 100%;
+    background-color: var(--music-bg);
+    min-width: 1100px;
+    & .music-wrap {
+        height: 100%;
+        min-width: 1100px;
+        margin: 0 6%;
+        position: relative;
+    }
+}
+.control-container {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 11%;
+    & .control-btn {
+        cursor: pointer;
+        display: inline-block;
+        line-height: 57px;
+        &+.control-btn {
+            margin-left: 40px;
+        }
+    }
+    & i {
+        font-size: 24px;
+        color: rgba(225,225,225,.8);
+        &:hover {
+            color: var(--white-color);
+        }
+        &.icon-play {
+            font-size: 38px;
+        }
+    }
+    & .play-container {
+        display: flex;
+        align-items: center;
+    }
+    & .progress-bar {
+        flex: 1;
+        margin: 0 40px;
+        height: 2px;
+        background-color: rgba(255,255,255,.2);
+        cursor: pointer;
+        & .progress-bar__filled {
+            position: relative;
+            height: 100%;
+            background-color: rgba(255,255,255,.7);
+            & .progress-bar__dragger {
+                position: absolute;
+                top: -4px;
+                right: -4px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: rgba(255,255,255,1);
+            }
+        }
+    }
+    & .progress-bar__sound {
+        width: 140px;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+        & .progress-bar {
+             margin: 0 5px;
+        }
+    }
+}
