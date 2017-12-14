@@ -7,3 +7,8 @@ export function formatEmoji (uCode) {
 export function getRand (min, max) {
     return Math.floor(Math.random() * max) + min;
 }
+export function secondToMinute (s) {
+    const m = parseInt(s / 60, 10);
+    s = parseInt(s - m * 60, 10);
+    return `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+}

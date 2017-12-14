@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'iconfont';
-  src: url('../fonts/iconfont.eot?iconTimeStamp=1511522163658'),
-  url('../fonts/iconfont.woff?iconTimeStamp=1511522163658') format('woff'),
-  url('../fonts/iconfont.ttf?iconTimeStamp=1511522163658') format('truetype'),
-  url('../fonts/iconfont.svg?iconTimeStamp=1511522163658') format('svg');
+  src: url('../fonts/iconfont.eot?iconTimeStamp=1513221479958'),
+  url('../fonts/iconfont.woff?iconTimeStamp=1513221479958') format('woff'),
+  url('../fonts/iconfont.ttf?iconTimeStamp=1513221479958') format('truetype'),
+  url('../fonts/iconfont.svg?iconTimeStamp=1513221479958') format('svg');
 }
 [class^="icon-"],
 [class*=" icon-"]{
@@ -22,6 +22,8 @@
 }
 .icon-home:before { content: "\e600"; }
 
+.icon-pause:before { content: "\e615"; }
+
 .icon-8:before { content: "\e607"; }
 
 .icon-11:before { content: "\e639"; }
@@ -39,6 +41,8 @@
 .icon-dibushouye:before { content: "\e613"; }
 
 .icon-github:before { content: "\e601"; }
+
+.icon-mute:before { content: "\e61a"; }
 
 .icon-last:before { content: "\e628"; }
 

@@ -275,6 +275,9 @@
 .no-padding-right {
   padding-right: 0 !important;
 }
+.padding-right-6 {
+  padding-right: 6px !important;
+}
 
 /********************************************************* border ***************************************************************/
 .no-border {
