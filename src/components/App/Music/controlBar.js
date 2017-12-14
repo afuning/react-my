@@ -5,9 +5,8 @@ class ControlBar extends Component{
         super(props);
         this.state = {
             audio: null,
-            currentTime: 0,
         };
-        this.controlAction = this.controlAction.bind(this)
+        this.controlAction = this.controlAction.bind(this);
     }
     componentDidMount () {
         this.currentAudio = new Audio();
@@ -26,6 +25,9 @@ class ControlBar extends Component{
                 this.setState({ audio: this.currentAudio }, () => {
                     this.state.audio.addEventListener('loadedmetadata',  this.controlAction('play&pause'), false);
                     this.state.audio.addEventListener('timeupdate', this.controlAction, false);
+                    this.state.audio.addEventListener('ended', () => {
+                        this.controlAction('next');
+                    }, false);
                 });
             }
         } catch (err) {
