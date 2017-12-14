@@ -9,19 +9,25 @@ class ControlBar extends Component{
         };
         this.controlAction = this.controlAction.bind(this)
     }
-    componentDidMount(){
-        this.initAudio();
+    componentDidMount () {
+        this.currentAudio = new Audio();
+    }
+    componentWillReceiveProps(nextProps){
+        this.initAudio(nextProps);
     }
     componentWillUnmount(){
         this.state.audio.removeEventListener('timeupdate', this.controlAction, false);
         this.state.audio.pause();
     }
-    initAudio () {
+    initAudio (nextProps) {
         try {
-            this.setState({ audio: new Audio(this.props.audio) }, () => {
-                this.state.audio.addEventListener('loadedmetadata',  this.controlAction, false);
-                this.state.audio.addEventListener('timeupdate', this.controlAction, false);
-            });
+            if (nextProps.audio.src) {
+                this.currentAudio.src = nextProps.audio.src;
+                this.setState({ audio: this.currentAudio }, () => {
+                    this.state.audio.addEventListener('loadedmetadata',  this.controlAction('play&pause'), false);
+                    this.state.audio.addEventListener('timeupdate', this.controlAction, false);
+                });
+            }
         } catch (err) {
             console.log(err);
         }
@@ -42,6 +48,14 @@ class ControlBar extends Component{
                     break;
                 case 'volume':
                     audio.volume = value;
+                    break;
+                case 'last':
+                    audio.pause();
+                    this.props.onPrev();
+                    break;
+                case 'next':
+                    audio.pause();
+                    this.props.onNext();
                     break;
                 default:
                     break;
@@ -71,9 +85,9 @@ class PlayToggle extends Component{
         const volume = audio ? audio.volume * 100: 100;
         return (
             <div className="play-container">
-                <div className="last control-btn"><i className="icon-last"></i></div>
+                <div onClick={this.props.onClick.bind(this, 'last')} className="last control-btn"><i className="icon-last"></i></div>
                 <div onClick={this.props.onClick.bind(this, 'play&pause')} className="play control-btn"><i className={paused ? "icon-play" : "icon-pause"}></i></div>
-                <div className="next control-btn"><i className="icon-next"></i></div>
+                <div onClick={this.props.onClick.bind(this, 'next')} className="next control-btn"><i className="icon-next"></i></div>
                 <div className="progress-bar__time">
                     <ProgressBar 
                         progress={progress}

@@ -1,22 +1,68 @@
 import React, { Component } from 'react';
 import '@assets/styles/cpts/music.css';
 import ControlBar from './controlBar.js';
+import apis from '@src/util/api/index.js';
 // import LoadScreen from '@cpts/Basic/loadScreen.js';
 // import Particles from '@cpts/Basic/particles.js';
+import findIndex from 'lodash/findIndex';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       audio: {},
-      list: [{
-        src: 'http://7xthm1.com1.z0.glb.clouddn.com/wedont.mp3',
-      }],
+      list: [],
     };
   }
 
+  componentDidMount () {
+    this.initMusic();
+  }
+
+  changeMusic (type) {
+    let { audio, list } = this.state;
+    const currentId = this.state.audio.id;
+    const index = findIndex(list, { id: currentId });
+    if (index === -1) return;
+    switch (type) {
+      case 'prev':
+        if (index === 0) {
+          audio = list[list.length - 1];
+        } else {
+          audio = list[index - 1];
+        }
+        break;
+      case 'next':
+        if (index === list.length - 1) {
+          audio = list[0];
+        } else {
+          audio = list[index + 1];
+        }
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      audio
+    });
+  }
+
+  async initMusic () {
+    try {
+      const res = await apis.music.search();
+      if (res.code === 0 && res.data.list.length > 0) {
+        this.setState({
+          list: res.data.list,
+          audio: res.data.list[0]
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   render() {
-    const { list } = this.state;
+    const { audio } = this.state;
     return (
       <div className="music-container">
         {/* <LoadScreen></LoadScreen> */}
@@ -27,7 +73,11 @@ class App extends Component {
             loading={false}
             isDraggingTime={false}
           /> */}
-          <ControlBar audio={list[0].src}></ControlBar>
+          <ControlBar 
+            audio={audio}
+            onPrev={this.changeMusic.bind(this, 'prev')}
+            onNext={this.changeMusic.bind(this, 'next')}
+          />
         </div>
       </div>
     );
