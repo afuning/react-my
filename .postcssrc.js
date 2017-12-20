@@ -2,6 +2,7 @@ module.exports = {
     ident: 'postcss',
     plugins: [
         require('postcss-import'),
+        require('postcss-each'),
         require('postcss-flexbugs-fixes'),
         require('autoprefixer')({
           browsers: [

@@ -1,12 +1,28 @@
 @import '../variable.css';
+.music-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.music-leftnav {
+    width: 300px;
+    height: 100%;
+    background-color: #343233;
+    position: relative;
+    transition: all 400ms;
+}
+.music-leftnav__close {
+    margin-left: -300px;
+}
 .music-container {
+    flex: 1;
     height: 100%;
     width: 100%;
     background-color: var(--music-bg);
-    min-width: 1100px;
+    min-width: 900px;
     & .music-wrap {
         height: 100%;
-        min-width: 1100px;
+        min-width: 900px;
         margin: 0 6%;
         position: relative;
     }
@@ -80,4 +96,42 @@
              margin: 0 5px;
         }
     }
+}
+.music-bar {
+    color: #60b044;
+    color: #fff;
+    position: absolute;
+    right: -80px;
+    cursor: pointer;
+}
+.music-bar-list {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    & .bar {
+        width: 3px;
+        margin-left: 3px;
+        background-color: #60b044;
+        background-color: #fff;
+        opacity: .9;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+@each $i in 0, 1, 2, 3, 4, 5, 6, 7, 8 {
+  .b$(i) {
+    height: 1$(i)px;
+    animation: anim$(i) 5$(i)$(i)ms ease infinite .4s;
+  }
+  @-webkit-keyframes anim$(i){
+    0%  {height: 3$(i)px;}
+    25% {height: 2$(i)px;}
+    50% {height: 00px;}
+    75% {height: 2$(i)px;}
+    100%{height: $(i)px;}
+  }
+}
+.music-list {
+    width: 100%;
 }

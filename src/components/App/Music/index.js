@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '@assets/styles/cpts/music.css';
+import MusicList from './musicList.js';
+import MusicBar from './musicBar.js';
 import ControlBar from './controlBar.js';
 import apis from '@src/util/api/index.js';
 // import LoadScreen from '@cpts/Basic/loadScreen.js';
 // import Particles from '@cpts/Basic/particles.js';
 import findIndex from 'lodash/findIndex';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       audio: {},
       list: [],
+      listStatus: false,
     };
   }
 
@@ -61,23 +64,36 @@ class App extends Component {
     }
   }
 
-  render() {
-    const { audio } = this.state;
-    return (
-      <div className="music-container">
-        {/* <LoadScreen></LoadScreen> */}
-        <div className="music-wrap">
+  openList () {
+    this.setState({
+      listStatus: !this.state.listStatus
+    });
+  }
 
-          {/* <Particles 
-            isPlaying={true} 
-            loading={false}
-            isDraggingTime={false}
-          /> */}
-          <ControlBar 
-            audio={audio}
-            onPrev={this.changeMusic.bind(this, 'prev')}
-            onNext={this.changeMusic.bind(this, 'next')}
+  render() {
+    const { audio, listStatus } = this.state;
+    return (
+      <div className="music-content">
+        <div className={listStatus ? 'music-leftnav' : 'music-leftnav music-leftnav__close'}>
+          <MusicList
           />
+          <MusicBar onClick={this.openList.bind(this)} />
+        </div>
+        <div className="music-container">
+          {/* <LoadScreen></LoadScreen> */}
+          <div className="music-wrap">
+
+            {/* <Particles 
+              isPlaying={true} 
+              loading={false}
+              isDraggingTime={false}
+            /> */}
+            <ControlBar 
+              audio={audio}
+              onPrev={this.changeMusic.bind(this, 'prev')}
+              onNext={this.changeMusic.bind(this, 'next')}
+            />
+          </div>
         </div>
       </div>
     );

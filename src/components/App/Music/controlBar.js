@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { secondToMinute } from '@src/util/tools.js';
-class ControlBar extends Component{
+class ControlBar extends React.Component{
     constructor (props) {
         super(props);
         this.state = {
@@ -10,12 +10,20 @@ class ControlBar extends Component{
     }
     componentDidMount () {
         this.currentAudio = new Audio();
+        this.currentAudio.addEventListener('loadeddata', () => {this.controlAction('play&pause')}, false);
+        this.currentAudio.addEventListener('timeupdate', this.controlAction, false);
+        this.currentAudio.addEventListener('ended', () => {this.controlAction('next')}, false);
     }
-    componentWillReceiveProps(nextProps){
-        this.initAudio(nextProps);
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return this.props.audio.src !== nextProps.audio.src;
+    // }
+    componentWillUpdate(nextProps){
+        if (!this.state.audio || nextProps.audio.src !== this.state.audio.src) {
+            this.initAudio(nextProps);
+        }
     }
     componentWillUnmount(){
-        this.state.audio.removeEventListener('timeupdate', this.controlAction, false);
+        this.state.audio.removeEventListener('timeupdate', this.controlAction);
         this.state.audio.pause();
     }
     initAudio (nextProps) {
@@ -23,11 +31,7 @@ class ControlBar extends Component{
             if (nextProps.audio.src) {
                 this.currentAudio.src = nextProps.audio.src;
                 this.setState({ audio: this.currentAudio }, () => {
-                    this.state.audio.addEventListener('loadedmetadata',  this.controlAction('play&pause'), false);
-                    this.state.audio.addEventListener('timeupdate', this.controlAction, false);
-                    this.state.audio.addEventListener('ended', () => {
-                        this.controlAction('next');
-                    }, false);
+                    this.state.audio.load();
                 });
             }
         } catch (err) {
@@ -52,13 +56,11 @@ class ControlBar extends Component{
                     audio.volume = value;
                     break;
                 case 'last':
-                    audio.pause();
                     this.props.onPrev();
-                    break;
+                    return;
                 case 'next':
-                    audio.pause();
                     this.props.onNext();
-                    break;
+                    return;
                 default:
                     break;
             }
@@ -122,6 +124,7 @@ class ProgressBar extends Component {
         const end = start + e.currentTarget.offsetWidth;
         const put = e.clientX;
         let progress = (put - start) / (end - start);
+        // 防止超出1；
         if (progress > 1) {
             progress = 1;
         }
