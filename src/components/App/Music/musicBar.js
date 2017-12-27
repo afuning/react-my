@@ -10,7 +10,7 @@ class MusicList extends Component{
     render () {
         return (
             <div className="music-bar" onClick={this.props.onClick.bind(this)}>
-                <div>Music List</div>
+                <div>Music Menu</div>
                 <div className="music-bar-list">
                     {
                         new Array(9).fill(1).map((i, index) => {

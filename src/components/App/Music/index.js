@@ -15,6 +15,7 @@ class App extends React.Component {
       audio: {},
       list: [],
       listStatus: false,
+      currentIndex: 0,
     };
   }
 
@@ -22,7 +23,7 @@ class App extends React.Component {
     this.initMusic();
   }
 
-  changeMusic (type) {
+  changeMusic (type, song = null) {
     let { audio, list } = this.state;
     const currentId = this.state.audio.id;
     const index = findIndex(list, { id: currentId });
@@ -42,11 +43,15 @@ class App extends React.Component {
           audio = list[index + 1];
         }
         break;
+      case 'select':
+        audio = {...song};
+        break;
       default:
         break;
     }
     this.setState({
-      audio
+      audio,
+      currentIndex: findIndex(list, { id: audio.id })
     });
   }
 
@@ -56,7 +61,8 @@ class App extends React.Component {
       if (res.code === 0 && res.data.list.length > 0) {
         this.setState({
           list: res.data.list,
-          audio: res.data.list[0]
+          audio: res.data.list[0],
+          currentIndex: 0,
         });
       }
     } catch (error) {
@@ -71,11 +77,14 @@ class App extends React.Component {
   }
 
   render() {
-    const { audio, listStatus } = this.state;
+    const { audio, listStatus, list, currentIndex } = this.state;
     return (
       <div className="music-content">
         <div className={listStatus ? 'music-leftnav' : 'music-leftnav music-leftnav__close'}>
           <MusicList
+            list={list}
+            currentIndex={currentIndex}
+            onChange={this.changeMusic.bind(this, 'select')}
           />
           <MusicBar onClick={this.openList.bind(this)} />
         </div>

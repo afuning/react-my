@@ -7,7 +7,7 @@
 .music-leftnav {
     width: 300px;
     height: 100%;
-    background-color: #343233;
+    background-color: #111;
     position: relative;
     transition: all 400ms;
 }
@@ -98,11 +98,17 @@
     }
 }
 .music-bar {
-    color: #60b044;
     color: #fff;
     position: absolute;
     right: -80px;
+    top: 20px;
     cursor: pointer;
+    &:hover {
+        color: #cb2027;
+        & .bar {
+            background-color: #cb2027;
+        }
+    }
 }
 .music-bar-list {
     display: flex;
@@ -111,7 +117,6 @@
     & .bar {
         width: 3px;
         margin-left: 3px;
-        background-color: #60b044;
         background-color: #fff;
         opacity: .9;
         &:first-child {
@@ -134,4 +139,42 @@
 }
 .music-list {
     width: 100%;
+    & .song-item {
+        height: 50px;
+        text-indent: 8px;
+        background: #1d1d1d;
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        margin-bottom: 2px;
+        & .song-item-index {
+            color: #6d6d6d;
+            width: 20px;
+        }
+        & .song-item-name {
+            color: #f0f0f0;
+            flex: 1;
+        }
+        & .song-item-time {
+            color: #6d6d6d;
+            width: 50px;
+        }
+        & .song-item-icon {
+            text-align: left;
+            color: #6d6d6d;
+            font-size: 18px;
+            width: 40px;
+            & .icon-music1 {
+                color: #ff564c;
+            }
+        }
+        &:hover {
+            background: #222;
+            cursor: pointer;
+        }
+        &:hover .song-item-name {
+            padding-left: 5px;
+            transition: all 0.11s ease-in;
+        }
+    }
 }

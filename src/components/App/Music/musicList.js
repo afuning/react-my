@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
+import { secondToMinute } from '@src/util/tools.js';
 class MusicList extends Component{
-    constructor (props) {
-        super(props);
-        this.state = {
-            list: [],
-            audio: null,
-        };
+
+    changeSong (song) {
+        this.props.onChange(song);
     }
+
     render () {
+        const { list, currentIndex } = this.props;
         return (
             <div className="music-list">
-                
+                <ul>
+                    {
+                        list.map((item, i) => {
+                            return (<li className="song-item" onClick={this.changeSong.bind(this, item)} key={item.id}>
+                                <span className="song-item-index">{i + 1}</span>
+                                <span className="song-item-name">{item.name}</span>
+                                <span className="song-item-time">{secondToMinute(item.time)}</span>
+                                <span className="song-item-icon">
+                                    <i className={currentIndex === i ? 'icon-music1' : 'icon-play'}></i>
+                                </span>
+                            </li>)
+                        })
+                    }
+                </ul>
             </div>
         );
     }
