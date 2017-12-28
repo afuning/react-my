@@ -148,10 +148,9 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
               compact: true,
               plugins: [
-                ["import", { libraryName: "antd", style: "true" }] // `style: true` 会加载 less 文件
+                ["import", { libraryName: "antd", style: true }] // `style: true` 会加载 less 文件
               ]
             },
           },
