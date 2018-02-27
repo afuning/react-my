@@ -132,9 +132,11 @@ class ProgressBar extends Component {
     }
     render () {
         return (
-            <div className="progress-bar" onClick={this.changeProgress}>
-                <div className="progress-bar__filled">
-                    <div className="progress-bar__dragger" style={{"left": `${this.props.progress}%`}}/>
+            <div className="progress-bar-container" onClick={this.changeProgress}>
+                <div className="progress-bar">
+                    <div className="progress-bar__filled" style={{"width": `${this.props.progress}%`}}>
+                        <div className="progress-bar__dragger"/>
+                    </div>
                 </div>
             </div>
         )

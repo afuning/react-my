@@ -7,6 +7,7 @@ import apis from '@src/util/api/index.js';
 // import LoadScreen from '@cpts/Basic/loadScreen.js';
 // import Particles from '@cpts/Basic/particles.js';
 import findIndex from 'lodash/findIndex';
+import { _SONG_URL_ } from '@src/util/static.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -57,11 +58,19 @@ class App extends React.Component {
 
   async initMusic () {
     try {
-      const res = await apis.music.search();
-      if (res.code === 0 && res.data.list.length > 0) {
+      const res = await apis.music.search({
+        keywords: '空空如也'
+      });
+      if (res.code === 200 && res.result.songCount > 0) {
+        let list = res.result.songs.map(song => {
+          return {
+            ...song,
+            src: `${_SONG_URL_}${song.id}.mp3`
+          }
+        });
         this.setState({
-          list: res.data.list,
-          audio: res.data.list[0],
+          list: list,
+          audio: list[0],
           currentIndex: 0,
         });
       }

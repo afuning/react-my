@@ -18,6 +18,10 @@ axios.interceptors.response.use((response) => {
 })
 
 export async function reqMethods (method, url, args) {
+    console.log(method, url, args);
+    if (methodConfig[method] === 'get') {
+      args = {params: args};
+    }
     return axios[methodConfig[method]](url, args);
 }
 /**

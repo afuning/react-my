@@ -55,7 +55,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "PORT=3001 node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "iconfont": "node scripts/iconfont.js"
@@ -102,5 +102,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "theme": "./theme.js"
+  "theme": "./theme.js",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3000"
+    }
+  }
 }

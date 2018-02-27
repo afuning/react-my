@@ -12,3 +12,10 @@ export function secondToMinute (s) {
     s = parseInt(s - m * 60, 10);
     return `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
 }
+
+export function mSecondToMinute (ms) {
+    let s = parseInt(ms / 1000, 10);
+    const m = parseInt(s / 60, 10);
+    s = parseInt(s - m * 60, 10);
+    return `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+}
