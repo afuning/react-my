@@ -24,18 +24,22 @@ const publicUrl = '';
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 const fs = require('fs')
-const pkgPath = path.resolve(__dirname, './package.json')
-const pkg = fs.existsSync(pkgPath) ? require(pkgPath) : {}
+
+const pkgPath = paths.appPackageJson;
+const pkg = fs.existsSync(pkgPath) ? require(pkgPath) : {};
 let theme = {}
 if (pkg.theme && typeof pkg.theme === 'string') {
+  console.log(3);
   let cfgPath = pkg.theme
   // relative path
   if (cfgPath.charAt(0) === '.') {
     cfgPath = path.resolve(__dirname, cfgPath)
   }
   const getThemeConfig = require(cfgPath)
-  theme = getThemeConfig()
+  console.log(getThemeConfig);
+  theme = getThemeConfig();
 } else if (pkg.theme && typeof pkg.theme === 'object') {
+  console.log(2);
   theme = pkg.theme
 }
 // This is the development configuration.
@@ -200,7 +204,6 @@ module.exports = {
                 loader: require.resolve('less-loader'),
                 options: {
                   sourceMap: true,
-                  modules: false,
                   modifyVars: theme,
                 }
               },

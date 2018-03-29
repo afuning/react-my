@@ -5,9 +5,7 @@ import React, { Component } from 'react';
 //   } from 'react-router-dom';
 // import '@assets/styles/cpts/app.css';
 import { 
-    // Layout,
-    // Menu,
-    // Icon,
+  Button
  } from 'antd';
 
 class App extends Component {
@@ -20,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-       链接
+       链接<Button type="primary">按钮</Button>
       </div>
     );
   }

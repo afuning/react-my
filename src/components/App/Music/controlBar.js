@@ -23,8 +23,8 @@ class ControlBar extends React.Component{
         }
     }
     componentWillUnmount(){
-        this.state.audio.removeEventListener('timeupdate', this.controlAction);
-        this.state.audio.pause();
+        this.state.audio && this.state.audio.removeEventListener('timeupdate', this.controlAction);
+        this.state.audio && this.state.audio.pause();
     }
     initAudio (nextProps) {
         try {

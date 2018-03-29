@@ -102,7 +102,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "theme": "./theme.js",
+  "theme": "../theme.js",
   "proxy": {
     "/api": {
       "target": "http://localhost:3000"
